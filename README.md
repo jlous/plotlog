@@ -1,2 +1,2 @@
 # plotlog
-Plot maven build logs on time scale
+Plot maven build logs indented by timestamp
