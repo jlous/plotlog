@@ -17,7 +17,7 @@
     }
 
     h1 {
-      margin: 0.4ex  0;
+      margin: 0.4ex 0;
     }
 
     .head {
@@ -43,10 +43,11 @@
     }
 
     #logCanvas div.test {
-      border-top: 2px solid rgba(255, 255,255, 0.9);
+      border-top: 2px solid rgba(255, 255, 255, 0.9);
       border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     }
-    #ruler{
+
+    #ruler {
       pointer-events: none;
       position: fixed;
       top: 0;
@@ -55,19 +56,39 @@
       border-left: 1px solid grey;
     }
 
+    tr td:first-child{
+      text-align: right;
+    }
+
   </style>
 </head>
 <body>
 <div id="ruler"></div>
-  <div class="head">
-    <a href="https://github.com/jlous/plotlog">github.com/jlous/plotlog</a>
-    <h1>Maven build log timer</h1>
-    <input id="file-input" type="file" />
-    <label>Text size<input id="text-size" type="range" value="3" min="1" max="16"></label>
-  </div>
-  <div id="logCanvas">
+<div class="head">
+  <a href="https://github.com/jlous/plotlog">github.com/jlous/plotlog</a>
+  <h1>Maven build log timer</h1>
 
-  </div>
+  <table>
+    <colgroup>
+      <col style="text-align: right">
+    </colgroup>
+    <tr>
+      <td style="text-align: right"><label for="text-size">Source</label></td>
+      <td><input id="file-input" type="file" /></td>
+    </tr>
+    <tr>
+      <td><label for="text-size">Text size</label></td>
+      <td><input id="text-size" type="number" maxlength="3" value="3" min="1" max="16" style="text-align: right">px</td>
+    </tr>
+    <tr>
+      <td><label for="separate-tests">Isolate tests</label></td>
+      <td><input id="separate-tests" type="checkbox"></td>
+    </tr>
+  </table>
+</div>
+<div id="logCanvas">
+
+</div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="plotlog.js"></script>
