@@ -1,4 +1,4 @@
-let rawlog='';
+let rawlog = '';
 
 function readSingleFile(e) {
     if (!e.target.files) {
@@ -20,45 +20,47 @@ function render() {
     const separateTests = $("#separate-tests").is(':checked');
     const lines = rawlog.split('\n').map(line => {
         const timestamp = line.match(/^\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d,\d\d\dZ/);
-        if (timestamp){
-            logTime = Date.parse(timestamp[0].replace(',','.'));
+        if (timestamp) {
+            logTime = Date.parse(timestamp[0].replace(',', '.'));
             startTime = startTime || logTime;
         }
         let classes = ['logline'];
         let prefix = '';
         let postfix = '';
-        if (line.startsWith('[INFO] Running ')){
+        if (line.startsWith('[INFO] Running ')) {
             classes.push('test-start');
             prefix = '<div class="test">';
-            if (separateTests){
+            if (separateTests) {
                 startTime = logTime;
             }
         }
-        if (line.includes('] Tests run: ')){
+        let isTestEnd = line.includes('] Tests run: ');
+        if (isTestEnd) {
             classes.push('test-end');
             postfix = '</div>';
-            if (separateTests){
-                startTime = logTime;
-            }
         }
-        indent = (logTime-startTime)/100;
-        return `${prefix}<div style="padding-left: ${indent}px" class="${classes.join(' ')}">${line}</div>${postfix}`;
+        indent = (logTime - startTime) / 100;
+        let result = `${prefix}<div style="padding-left: ${indent}px" class="${classes.join(' ')}">${line}</div>${postfix}`;
+        if (isTestEnd && separateTests) {
+            startTime = logTime;
+        }
+        return result;
     });
     $("#logCanvas").html(lines.join('\n'));
 }
 
-$("#file-input").change(function(e) {
+$("#file-input").change(function (e) {
     readSingleFile(e);
 });
 
-$("#text-size").change(function() {
-    $('#logCanvas').css("font-size", $(this).val()+"px");
+$("#text-size").change(function () {
+    $('#logCanvas').css("font-size", $(this).val() + "px");
 });
 
-$("#separate-tests").change(function() {
+$("#separate-tests").change(function () {
     render();
 });
 
-$(document).on('mousemove', function(e){
-    $('#ruler').offset({left: e.pageX-5});
+$(document).on('mousemove', function (e) {
+    $('#ruler').offset({ left: e.pageX - 5 });
 });

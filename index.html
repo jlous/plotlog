@@ -9,10 +9,12 @@
       padding: 0;
       background-image: repeating-linear-gradient(
         to right,
-        #ddd 0%,
-        #eee 100%
+        #ffddaa 0%,
+        #ffddaa 50%,
+        #f0d0a0 50%,
+        #f0d0a0 100%
       );
-      background-size: 10px 10px;
+      background-size: 20px 20px;
       font-family: Verdana, sans-serif;
     }
 
@@ -77,8 +79,8 @@
       <td><input id="file-input" type="file" /></td>
     </tr>
     <tr>
-      <td><label for="text-size">Text size</label></td>
-      <td><input id="text-size" type="number" maxlength="3" value="3" min="1" max="16" style="text-align: right">px</td>
+      <td><label for="text-size">Zoom</label></td>
+      <td><input id="text-size" type="range" maxlength="3" value="3" min="1" max="16" style="text-align: right"></td>
     </tr>
     <tr>
       <td><label for="separate-tests">Isolate tests</label></td>
