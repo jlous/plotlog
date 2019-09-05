@@ -34,12 +34,12 @@ function render() {
                 startTime = logTime;
             }
         }
+        indent = (logTime - startTime) / 100;
         let isTestEnd = line.includes('] Tests run: ');
         if (isTestEnd) {
             classes.push('test-end');
             postfix = '</div>';
         }
-        indent = (logTime - startTime) / 100;
         let result = `${prefix}<div style="padding-left: ${indent}px" class="${classes.join(' ')}">${line}</div>${postfix}`;
         if (isTestEnd && separateTests) {
             startTime = logTime;

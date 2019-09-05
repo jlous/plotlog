@@ -5,8 +5,11 @@
   <title>Plotlog</title>
   <style type="text/css">
     body {
+      font-family: Verdana, sans-serif;
       margin: 0;
       padding: 0;
+
+      /* 10-pixel/1-second stripes */
       background-image: repeating-linear-gradient(
         to right,
         #ffddaa 0%,
@@ -15,7 +18,6 @@
         #f0d0a0 100%
       );
       background-size: 20px 20px;
-      font-family: Verdana, sans-serif;
     }
 
     h1 {
@@ -31,20 +33,20 @@
       font-size: 3px;
     }
 
-    #logCanvas div {
+    div.logline {
       white-space: nowrap;
     }
 
-    #logCanvas div.logline:hover {
+    div.logline:hover {
       border: 1px solid red;
       font-size: 14px;
     }
 
-    #logCanvas div.test-start {
+    div.test-start {
       font-size: 14px;
     }
 
-    #logCanvas div.test {
+    div.test {
       border-top: 2px solid rgba(255, 255, 255, 0.9);
       border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     }
