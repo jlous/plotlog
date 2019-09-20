@@ -20,6 +20,7 @@ function render() {
     const separateTests = $("#separate-tests").is(':checked');
     const lines = rawlog.split('\n').map(line => {
         const timestamp = line.match(/^\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d,\d\d\dZ/);
+        //TODO: figure out time zone and parse the local-time-stamped lines too
         if (timestamp) {
             logTime = Date.parse(timestamp[0].replace(',', '.'));
             startTime = startTime || logTime;
